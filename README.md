@@ -44,7 +44,7 @@ First you need an environment to run in. I've provided an environment.yml file t
 
 ```conda env create --file environment.yml```
 
-That will create an environment called modem. Activate it via ```conda activate modem```.
+That will create an environment called ```modem``` which contains the necessary modules. Activate it via ```conda activate modem```.
 
 You should then be able to run ```jupyter lab``` and open the example.ipynb or run either of the two python scripts: ```python collect_data.py``` or ```python reboot_modem.py```
 
@@ -52,6 +52,6 @@ If you are going to run the collect_data.py script, it collects at 15 second int
 
 ## Charts
 
-Make sure you are in the MB7621_modem_scraper directory and then run ```jupyter lab```. Open the charts.ipynb file. Assuming you have run collect_data.py successfully and you have a sqlite3 database called MB7621.db, run all the cells in the charts.ipynb notebook. You should end up with something like the following:
+Make sure you are in the MB7621_modem_scraper directory and then run ```jupyter lab```. Open the charts.ipynb file. Assuming you have run collect_data.py successfully and you have a sqlite3 database called MB7621.db, run all the cells in the charts.ipynb notebook. The cell containing "hours" defines how many hours back worth of data to display, starting from now. So hours=24 display the past 24 hours worth of data. If all goes well, you should end up with something like the following:
 
 <img width="921" alt="charts" src="https://user-images.githubusercontent.com/3979338/89111961-5a230b00-d411-11ea-8926-f9b98e913198.png">
