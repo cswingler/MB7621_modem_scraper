@@ -47,4 +47,4 @@ If you are going to run the collect_data.py script, it collects at 15 second int
 
 ## Charts
 
-<img width="921" alt="charts" src="https://user-images.githubusercontent.com/397933889111961-5a230b00-d411-11ea-8926-f9b98e913198.png">
+<img width="921" alt="charts" src="https://user-images.githubusercontent.com/3979338/89111961-5a230b00-d411-11ea-8926-f9b98e913198.png">
