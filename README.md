@@ -1,5 +1,5 @@
 # MB7621_modem_scraper
-Python project to scrap Motorola MB7621 webpage info, save to sqlite db and do some charting. 
+Python project to scrape Motorola MB7621 webpage info, save to sqlite db and do some charting. 
 
 I have been having problems with my cable internet service, and one of the troubleshooting steps I took was to purchase a new modem. Still had the same problems. In order to convince my cable company that there were issues that had nothing to do with modem or house, I decided to collect some data. To that end I embarked on a project to learn python coding/charting, jupyter lab, web scraping and github. Before you are the fruits of my labor. 
 
@@ -46,5 +46,7 @@ To run either of the two python scripts just run ```python collect_data.py``` or
 If you are going to run the collect_data.py script, it collects at 15 second intervals. If you want to collect faster or slower, edit config.cfg and change the interval. The units on interval are seconds. 
 
 ## Charts
+
+Make sure you are in the MB7621_modem_scraper directory and then run ```jupyter lab```. Open the charts.ipynb file. Assuming you have run collect_data.py successfully and you have a sqlite3 database called MB7621.db, run all the cells in the charts.ipynb notebook. You should end up with something like the following:
 
 <img width="921" alt="charts" src="https://user-images.githubusercontent.com/3979338/89111961-5a230b00-d411-11ea-8926-f9b98e913198.png">
