@@ -10,7 +10,7 @@ I have been having problems with my cable internet service, and one of the troub
 - collect_data.py is a more complicated example that collects the web scrappings into a sqlite database at a user specified interval. 
 - reboot_modem.py does just that...reboots your modem. Be careful there are no checks...if you run this it will reboot your modem.
 
-## Before You Get Started...
+## First Step: Modem Password
 
 You need to figure out what your modem password really is. It is not the string that you type at the modem login page. There is a bit of javascript on the login page that scrambles your password before sending to the modem, and you need to discover what that scrambled password is. The easiest way is use tcpdump or wireshark or similar to capture a modem login session to a file and then search for the encoded password. On my mac that might look like the following:
 
@@ -22,6 +22,8 @@ Now search for "loginPassword=" (make sure you include the equals sign "="). The
 
 Note that some characters that start with % and followed by two characters are encoded. Go [here](https://www.w3schools.com/tags/ref_urlencode.ASP) to decode them. In my example, %3D is equal sign "=". So my password would be ```aAbBcCdDeEfF==```.
 
+## Config.cfg
+
 Edit the config.cfg file and enter your newly discovered password there. Note that quotes are not required. Here is what the config might look like:
 
 ```
@@ -31,7 +33,7 @@ password=aAbBcCdDeEfF==
 interval=15
 ```
 
-## How to Get Started?
+## Python Environment
 
 First you need an environment to run in. I've provided an environment.yml file that you can use with conda like so:
 
@@ -39,9 +41,7 @@ First you need an environment to run in. I've provided an environment.yml file t
 
 That will create an environment called modem. Activate it via ```conda activate modem```.
 
-Then you should be able to run ```jupyter lab``` and open the example.ipynb. 
-
-To run either of the two python scripts just run ```python collect_data.py``` or ```python reboot_modem.py```
+You should then be able to run ```jupyter lab``` and open the example.ipynb or run either of the two python scripts: ```python collect_data.py``` or ```python reboot_modem.py```
 
 If you are going to run the collect_data.py script, it collects at 15 second intervals. If you want to collect faster or slower, edit config.cfg and change the interval. The units on interval are seconds. 
 

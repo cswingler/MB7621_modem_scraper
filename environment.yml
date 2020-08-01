@@ -1,0 +1,12 @@
+name: modem
+channels:
+  - defaults
+dependencies:
+  - python=3.8.*
+  - beautifulsoup4=4.9.*
+  - jupyterlab=2.1.*
+  - matplotlib=3.2.*
+  - numpy=1.18.*
+  - pandas=1.0.*
+  - requests=2.24.*
+  - sqlalchemy=1.3.*
