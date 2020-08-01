@@ -22,6 +22,14 @@ Now search for "loginPassword=" (make sure you include the equals sign "="). The
 
 Note that some characters that start with % and followed by two characters are encoded. Go [here](https://www.w3schools.com/tags/ref_urlencode.ASP) to decode them. In my example, %3D is equal sign "=". So my password would be ```aAbBcCdDeEfF==```.
 
+Edit the config.cfg file and enter your newly discovered password there. Note that quotes are not required. 
+
+```
+[MB7621]
+username=admin
+password=aAbBcCdDeEfF==
+interval=15
+```
 
 ## How to Get Started?
 
