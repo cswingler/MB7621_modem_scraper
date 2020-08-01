@@ -22,7 +22,7 @@ Now search for "loginPassword=" (make sure you include the equals sign "="). The
 
 Note that some characters that start with % and followed by two characters are encoded. Go [here](https://www.w3schools.com/tags/ref_urlencode.ASP) to decode them. In my example, %3D is equal sign "=". So my password would be ```aAbBcCdDeEfF==```.
 
-Edit the config.cfg file and enter your newly discovered password there. Note that quotes are not required. 
+Edit the config.cfg file and enter your newly discovered password there. Note that quotes are not required. Here is what the config might look like:
 
 ```
 [MB7621]
@@ -43,5 +43,8 @@ Then you should be able to run ```jupyter lab``` and open the example.ipynb.
 
 To run either of the two python scripts just run ```python collect_data.py``` or ```python reboot_modem.py```
 
+If you are going to run the collect_data.py script, it collects at 15 second intervals. If you want to collect faster or slower, edit config.cfg and change the interval. The units on interval are seconds. 
 
+## Charts
 
+<img width="921" alt="charts" src="https://user-images.githubusercontent.com/397933889111961-5a230b00-d411-11ea-8926-f9b98e913198.png)">
