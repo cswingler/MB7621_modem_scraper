@@ -3,6 +3,8 @@ Python project to scrape Motorola MB7621 webpage info, save to sqlite db and do 
 
 I have been having problems with my cable internet service, and one of the troubleshooting steps I took was to purchase a new modem. Still had the same problems. In order to convince my cable company that there were issues that had nothing to do with modem or house, I decided to collect some data. To that end I embarked on a project to learn python coding/charting, jupyter lab, web scraping and github. Before you are the fruits of my labor. 
 
+Update: Tech came to my house on Sunday and replaced the cable between street and house. 24 hours has gone by and not one drop :-)
+
 Please keep in mind that web scraping can be fragile and that firmware changes can and probably will break it. The version of the code here was developed on a modem with hardware version "V1.0" and software version "7621-5.7.1.5". You can find these by logging into your modem and looking on the Advanced>Software page. 
 
 ## What's Here?
