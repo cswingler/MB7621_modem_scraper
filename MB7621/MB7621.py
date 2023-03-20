@@ -59,9 +59,14 @@ class modem():
         self.payload_login["loginPassword"] = self.password
         login_page = self.s.get(self.url_login)
         resp = self.s.post(self.url_login_post, data=self.payload_login)
+        if 'Login is temporarily disabled for 5 minutes because of too many failed attempts' in resp.text: 
+            print("Hit the DoS limiter, sleeping 5 minutes.")
+            time.sleep(5*60)
         if resp.ok == False:
             self.session_status = False
         else:
+            print("---Login text---")
+            print(resp.text)
             self.session_status = True
         return self.session_status
  
@@ -92,22 +97,23 @@ class modem():
         if self.session_status == True:
             r = requests.get(self.url_home)
             soup = BeautifulSoup(r.text, 'html.parser')
+            # Periodically, there's no table because we need to test ofr 
+            # <title>Motorola Cable Modem : Login</title>
+            # (showing a failed login)
+            if 'Login' in soup.find('title').text: 
+                print(f"uh oh, login probably failed, got a title of \"{soup.find('title').text}\"")
             tr = soup.find_all('tr')
             online = tr[5].find('td',class_="moto-param-value").text
             downstream = tr[7].find('td',class_="moto-param-value").text
             upstream = tr[8].find('td',class_="moto-param-value").text
             mac = tr[12].find('td',class_="moto-param-value").text
-            IPv4 = tr[13].find('td',class_="moto-param-value").text
-            IPv6 = tr[14].find('td',class_="moto-param-value").text
-            softwareVersion = tr[15].find('td',class_="moto-param-value").text
+            softwareVersion = tr[13].find('td',class_="moto-param-value").text
             return [{
                 "timestamp":timestamp,
                 'OnlineStatus':online,
                 'Downstream':downstream,
                 'Upstream':upstream,
                 'MAC':mac,
-                'IPv4':IPv4,
-                'IPv6':IPv6,
                 'SoftwareVersion':softwareVersion
             }]
         else:
@@ -238,7 +244,7 @@ class modem():
         timestamp = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
 
         df_home = pd.DataFrame(self.getMotoHome(timestamp))
-        df_home.to_sql('home', con=self.engine, if_exists='append')
+        df_home.to_sql(name='home', con=self.engine, if_exists='append')
 
         df_sw = pd.DataFrame(self.getMotoSwInfo(timestamp))
         df_sw.to_sql('sw', con=self.engine, if_exists='append')
